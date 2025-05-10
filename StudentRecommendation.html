@@ -23,11 +23,28 @@ body {
 /* ===== Navigation Bar ===== */
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 40px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.598);
+  padding: 10px 5%;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .nav-left {
@@ -64,13 +81,17 @@ body {
 .nav-right .logout-button:hover {
   background-color: #185c16;
 }
+
+
         main {
             padding: 30px 60px;
         }
+        
         h1 {
             text-align: center;
             font-size: 18px;
-            margin-bottom: 20px;
+            margin-bottom: 50px;
+            margin-top: 70px;
         }
         .chart {
             text-align: center;
@@ -162,15 +183,9 @@ body {
 <header class="navbar">
   <div class="nav-left">
     <img src="PF/BSHS Logo.png" alt="School Logo" class="logo">
-    <nav>
-      <a href="StudentDashboard.php">Dashboard </a>
-      <a href="StudentRecommendation.html">Recommendations</a>
-      <a href="#">Career Paths</a>
-      <a href="#">Resources</a>
-    </nav>
   </div>
   <div class="nav-right">
-    <a href="Landing Page.html" button class="logout-button">Log Out</a></button>
+    <button class="logout-button">Log Out</button>
   </div>
 </header>
 
@@ -248,10 +263,7 @@ body {
         <img src="PF/deped_logo.png" alt="DepEd Logo">
       </div>
       <nav class="footer-nav">
-        <a href="StudentDashboard.php">Home</a>
-        <a href="StudentRecommendation.html">Recommendations</a>
-        <a href="#">Career Paths</a>
-        <a href="#">Resources</a>
+        <a href="StudentDashboard.html">Dashboard</a>
       </nav>
     </div>
   

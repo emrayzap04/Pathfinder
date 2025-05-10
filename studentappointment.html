@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Appointment - Pathfinder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f1f1;
+      padding: 20px;
+    }
+
+    .appointment-form {
+      background: #fff;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .success-message {
+      margin-top: 15px;
+      color: green;
+      text-align: center;
+      display: none;
+    }
+
+    .back-button {
+      margin-top: 10px;
+      background-color: #6c757d;
+    }
+
+    .back-button:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="appointment-form">
+    <h2>Book a Pathfinder Appointment</h2>
+    <form id="appointmentForm">
+      <label for="studentName">Name</label>
+      <input type="text" id="studentName" name="studentName" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="strand">Strand of Interest</label>
+      <select id="strand" name="strand" required>
+        <option value="">Select Strand</option>
+        <option value="ABM">ABM</option>
+        <option value="STEM">STEM</option>
+        <option value="HUMSS">HUMSS</option>
+        <option value="TVL">TVL</option>
+      </select>
+
+      <label for="message">Message / Reason for Appointment</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+
+      <button type="submit">Submit Appointment</button>
+      <p class="success-message" id="successMsg">Appointment submitted successfully!</p>
+    </form>
+
+    <button class="back-button" onclick="goBack()">Back</button>
+  </div>
+
+  <script>
+    document.getElementById("appointmentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      console.log("Submitted:", {
+        name: document.getElementById("studentName").value,
+        email: document.getElementById("email").value,
+        strand: document.getElementById("strand").value,
+        message: document.getElementById("message").value,
+      });
+
+      document.getElementById("successMsg").style.display = "block";
+      this.reset();
+    });
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+
+</body>
+</html>

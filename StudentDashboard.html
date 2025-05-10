@@ -420,7 +420,16 @@ tbody tr:hover {
   max-width: 1100px;
   margin: 0 auto;
   flex-wrap: wrap;
-}     
+}   
+
+.appointment-button {
+  background-color: #ffffff;
+  margin: 20px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+ 
 
 .next-steps-text {
   display: flex;
@@ -474,63 +483,49 @@ tbody tr:hover {
 }
 
 /* Footer Styling */
-footer {
-    border-top: 1px solid #464646; 
-    text-align: center;
+.footer {
+  background-color: #ffffff;
+  border: 1px solid black;
 }
 
-.footer-copyright {
-    background-color: #175C1A; 
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-}
-
-.footer-copyright p {
-    color: white;
-}
-
-.footer-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px; 
-    padding: 10px 0;
-}
-
-.footer-logos {
-    display: flex;
-    gap: 30px;
-    justify-content: flex-start; 
-    align-items: center; 
-    margin-left: 0; 
-    padding-left: 10px; 
+.footer-top {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
 .footer-logos img {
-    height: 40px;
+  width: 60px;
+  margin: 0 10px;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 50px;
-    padding: 0;
-    margin: 0;
-    margin-left: 150px;
+.footer-nav {
+  display: flex;
+  gap: 30px;
 }
 
-nav ul li {
-    display: inline;
+.footer-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    font-weight: 600;
+.footer-nav a:hover {
+  text-decoration: underline;
+  color: #217c1f;
 }
+
+.footer-bottom {
+  background-color: #217c1f;
+  color: white;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 14px;
+}         
+
 
 </style>
 </head>
@@ -683,31 +678,30 @@ nav ul li a {
         <p>Take time to research the ABM strand and talk to your teachers or guidance counselor to explore how this path aligns with your future goals.</p>
       </div>
     </div>
-    <a href="appointment.html" class="appointment-button">Book An Appointment</a>
+    <a href="studentappointment.html" class="appointment-button">Book An Appointment</a>
   </div>
 </section>
   
 <hr class="divider-line">
   
-  <footer>
-      <div class="footer-nav"> 
-          <div class="footer-logos">
-              <img src="PF/BSHS Logo.png" alt="Logo 1">
-              <img src="PF/kagawaran ng edukasyon_logo.png" alt="Logo 2">
-              <img src="PF/deped_logo.png" alt="Logo 3">
-          </div>
-          <nav>
-              <ul>
-                  <li><a href="#hero" class="active">Home</a></li>
-                  <li><a href="#recommend">Recommendations</a></li>
-                  <li><a href="#strands">Career Paths</a></li>
-                  <li><a href="#">Resources</a></li>
-          </nav>
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-logos">
+        <img src="PF/BSHS Logo.png" alt="School Logo">
+        <img src="PF/kagawaran ng edukasyon_logo.png" alt="Partner Logo">
+        <img src="PF/deped_logo.png" alt="DepEd Logo">
       </div>
-      <div class="footer-copyright">
-          <p>Copyrights © 2025 BSHS. All rights reserved.</p>
-      </div>
+      <nav class="footer-nav">
+        <a href="StudentDashboard.html">Dashboard</a>
+      </nav>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>Copyrights © 2025 BSHS. All rights reserved.</p>
+    </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   
 </body>
 </html>

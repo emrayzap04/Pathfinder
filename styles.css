@@ -1524,36 +1524,34 @@ body {
     color: white;
 }
 
-.container_hero section {
-    margin: 50px auto;
-    width: 80%;
-    margin: 50px auto 10px;
+.icon-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 40px 60px;
+    justify-items: center;
+    padding: 5px;
+    background-color: #f7fdf4;
+    border-radius: 10px;
+    margin-top: 40px;
 }
 
-
-h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
-.highlight {
-    color: green;
+.icon-item img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
 }
 
-
-p {
-    color: #666;
+.icon-item p {
+    font-weight: bold;
+    color: black;
     font-size: 14px;
-    
-}
-
-
-.section-text {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
 }
 
 
@@ -1561,7 +1559,7 @@ p {
     margin: 50px auto;
     width: 100%;
     background-color: #f7fdf4;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
 }
 
@@ -1606,7 +1604,6 @@ p {
     color: black;
     font-size: 14px;
 }
-
 
 .tabs {
     display: flex;
