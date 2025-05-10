@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #dcdde0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30%;
+      max-width: 800px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 7px 10px 4px lightgreen;
+    }
+
+    .form-container {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: green; /* Green color for the heading */
+    }
+
+    .form-container input {
+      width: 92%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1.3px solid green;
+      border-radius: 5px;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: green; /* Green button */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background-color: #0d650d; /* Darker green on hover */
+    }
+
+    .form-container .error {
+      color: red;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .switch-link {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .switch-link a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        width: 65%;
+        padding: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Login Form -->
+    <div class="form-container" id="login-form">
+
+      <form action="login.php" method="POST">
+        <h2>Let's Login</h2>
+        <div class="error" id="login-error-msg">Please fill in both fields.</div>
+
+        <input type="text" id="login-username" name="username" placeholder="Username" required />
+        <input type="password" id="login-password" name="password" placeholder="Password" required />
+        <button onclick="validateLogin()">Login</button>
+
+        <div class="switch-link">
+          Don't have an account? <a href="#" onclick="showAskAdmin()">Ask Admin</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <script>
+    function validateLogin() {
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+      const errorMsg = document.getElementById('login-error-msg');
+
+      if (username === '' || password === '') {
+        errorMsg.style.display = 'block';
+      } else {
+        errorMsg.style.display = 'none';
+
+        fetch('login.php', { // <-- Make sure this matches your PHP file
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+        })
+        .then(response => response.text())
+        .then(data => {
+          alert(data); // Show response from PHP
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred. See console for details.');
+        });
+      }
+    }
+
+    function showAskAdmin() {
+      alert('Contact admin@example.com or visit the admin panel.');
+    }
+  </script>
+
+</body>
+
+</html>

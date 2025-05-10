@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assessments - Admin Panel</title>
+  <style>
+        body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8fdf5;
+    }
+    .container {
+      display: flex;
+    }
+    .sidebar {
+      width: 300px;
+      background-color: #e0e0e0;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar .profile {
+      text-align: center;
+    }
+    .profile-icon {
+      width: 100px;
+      height: 100px;
+      background-color: green;
+      border-radius: 50%;
+      margin: 0 auto;
+    }
+    .name {
+      font-weight: bold;
+      color: green;
+      margin: 10px 0 5px;
+    }
+    .role {
+      margin-bottom: 30px;
+    }
+    .sidebar nav a {
+      display: block;
+      padding: 10px;
+      margin: 5px 0;
+      text-decoration: none;
+      color: black;
+      border-radius: 5px;
+    }
+    .sidebar nav a.active {
+      background-color: gray;
+      color: white;
+    }
+    .logout-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .logout-button {
+      background-color: green;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .main {
+      flex: 1;
+      padding: 40px;
+      background-color: #f7faf5;
+    }
+
+    .main h1 {
+      margin-top: 0;
+    }
+
+    .add-btn {
+      background-color: green;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 20px 0;
+    }
+
+    .overview {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .overview h2 {
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+    }
+
+    th {
+      color: green;
+    }
+
+    td {
+      vertical-align: top;
+    }
+
+    .action-btn {
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .delete-btn {
+      color: red;
+      border-color: red;
+    }
+
+    .footer {
+      background-color: darkgreen;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="sidebar">
+    <div class="profile">
+      <div class="profile-icon"></div>
+      <div class="name">Jane Doe</div>
+      <div class="role">Admin</div>
+    </div>
+      <nav class="menu">
+        <a href="Admin Dashboard - home.html" class="nav-item">Home</a>
+        <a href="Admin Dashboard - students.html" class="nav-item">Students</a>
+        <a href="Admin Dashboard - assessments.html" class="nav-item">Assessments</a>
+        <a href="Admin Dashboard - reports.html" class="nav-item">Reports</a>
+        <a href="Admin Dashboard - settings.html" class="nav-item">Settings</a>
+      </nav>
+    <div class="logout-section">
+      <p>Welcome, Admin!</p>
+      <button class="logout-button">Log Out</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <h1>Assessments</h1>
+    <button class="add-btn">➕ Add Assessment</button>
+
+    <div class="overview">
+      <h2>Overview</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Assessment</th>
+            <th>Taken</th>
+            <th>Duration</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Measures proficiency in Math, English, and Science</td>
+            <td>13</td>
+            <td>30 mins</td>
+            <td>
+              <button class="action-btn">Edit</button>
+              <button class="action-btn delete-btn">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Understand interests and personal traits</td>
+            <td>24</td>
+            <td>30 mins</td>
+            <td>
+              <button class="action-btn">Edit</button>
+              <button class="action-btn delete-btn">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Identifies possible career alignments</td>
+            <td>45</td>
+            <td>30 mins</td>
+            <td>
+              <button class="action-btn">Edit</button>
+              <button class="action-btn delete-btn">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    Copyrights © 2025 BSHS. All rights reserved.
+  </div>
+</body>
+</html>
