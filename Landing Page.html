@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PathFinder Plus System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Chatbot -->
+
+        <!-- Floating Button -->
+        <div class="chatbot-btn" onclick="toggleChatbot()">
+            💬
+            <div class="hover-message">Hello there</div>
+        </div>
+        
+        <div class="chatbot-popup">
+            <!-- Chatbot header -->
+            <div class="chat-header">
+                <div class="header-information">
+                    <svg class="botmot-logo" xmlns="http://www.w3.org/2000/svg"  width="30" height="30" viewBox="0 0 64 64"><defs><style>.cls-1{fill:#afb4c8}.cls-2{fill:#e1e4ed}.cls-4{fill:#cdd2e1}.cls-7{fill:#99a1b1}.cls-8{fill:#f26973}.cls-9{fill:#ffca6b}.cls-10{fill:#e65263}.cls-11{fill:#393045}</style></defs><g id="_22-bot" data-name="22-bot"><path class="cls-1" d="m41 47 2 8H21l2-8h18z"/><path class="cls-2" d="M46 55a2.006 2.006 0 0 1 2 2 2.015 2.015 0 0 1-2 2H18a2.006 2.006 0 0 1-2-2 2.015 2.015 0 0 1 2-2h28zM63 41v2a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4v-2z"/><path d="M63 9v32H1V9a4 4 0 0 1 4-4h54a4 4 0 0 1 4 4z" style="fill:#ade1fa"/><path class="cls-4" d="M7 43v-2H1v2a4 4 0 0 0 4 4h6a4 4 0 0 1-4-4z"/><path d="M11 5H5a4 4 0 0 0-4 4v32h6V9a4 4 0 0 1 4-4z" style="fill:#8ed8f8"/><path class="cls-4" d="M57 43v-2h6v2a4 4 0 0 1-4 4h-6a4 4 0 0 0 4-4z"/><path d="M53 5h6a4 4 0 0 1 4 4v32h-6V9a4 4 0 0 0-4-4z" style="fill:#d4effc"/><path class="cls-7" d="M41 47H23l-1 4h20l-1-4z"/><path class="cls-4" d="M18 59h28a2.015 2.015 0 0 0 2-2H16a2.006 2.006 0 0 0 2 2z"/><path class="cls-1" d="M47 39v2H17v-2a2.006 2.006 0 0 1 2-2h26a2.006 2.006 0 0 1 2 2z"/><path class="cls-2" d="M41 29v5h-6v-3a2.006 2.006 0 0 0-2-2h-2a2.006 2.006 0 0 0-2 2v3h-6V18h18v11zm-3-5a2 2 0 1 0-2 2 2.006 2.006 0 0 0 2-2zm-8 0a2 2 0 1 0-2 2 2.006 2.006 0 0 0 2-2z"/><path class="cls-8" d="M47 23v6a2.006 2.006 0 0 1-2 2h-2a2.006 2.006 0 0 1-2-2v-6a2.006 2.006 0 0 1 2-2h2a2.006 2.006 0 0 1 2 2z"/><circle class="cls-9" cx="36" cy="24" r="2"/><path class="cls-7" d="M37 34v3H27v-3h10z"/><path class="cls-8" d="M35 31v3h-6v-3a2.006 2.006 0 0 1 2-2h2a2.006 2.006 0 0 1 2 2z"/><circle class="cls-9" cx="28" cy="24" r="2"/><path class="cls-8" d="M23 23v6a2.006 2.006 0 0 1-2 2h-2a2.006 2.006 0 0 1-2-2v-6a2.006 2.006 0 0 1 2-2h2a2.006 2.006 0 0 1 2 2z"/><path class="cls-10" d="M45 21h-2a1.923 1.923 0 0 0-.5.072A2 2 0 0 1 44 23v6a2 2 0 0 1-1.5 1.928A1.923 1.923 0 0 0 43 31h2a2.006 2.006 0 0 0 2-2v-6a2.006 2.006 0 0 0-2-2zM21 21h-2a1.923 1.923 0 0 0-.5.072A2 2 0 0 1 20 23v6a2 2 0 0 1-1.5 1.928A1.923 1.923 0 0 0 19 31h2a2.006 2.006 0 0 0 2-2v-6a2.006 2.006 0 0 0-2-2z"/><path class="cls-11" d="M59 4H5a5.006 5.006 0 0 0-5 5v34a5.006 5.006 0 0 0 5 5h16.719l-1.5 6H18a3.015 3.015 0 0 0-3 3 3 3 0 0 0 3 3h28a3.015 3.015 0 0 0 3-3 3 3 0 0 0-3-3h-2.219l-1.5-6H59a5.006 5.006 0 0 0 5-5V9a5.006 5.006 0 0 0-5-5zM5 6h54a3 3 0 0 1 3 3v31H48v-1a3 3 0 0 0-3-3h-7v-1h3a1 1 0 0 0 1-1v-2.184A2.966 2.966 0 0 0 43 32h2a3 3 0 0 0 3-3v-6a3 3 0 0 0-3-3h-.051a12.987 12.987 0 0 0-25.9 0H19a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h2a2.966 2.966 0 0 0 1-.184V34a1 1 0 0 0 1 1h3v1h-7a3 3 0 0 0-3 3v1H2V9a3 3 0 0 1 3-3zm37 17a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm0-2.816V18a1 1 0 0 0-1-1H23a1 1 0 0 0-1 1v2.184a2.993 2.993 0 0 0-.95-.179 10.995 10.995 0 0 1 21.9 0 2.993 2.993 0 0 0-.95.179zM21 22a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1zm3 7V19h16v14h-4v-2a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v2h-4zm10 4h-4v-2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zm2 2v1h-8v-1zm9 3a1 1 0 0 1 1 1v1H18v-1a1 1 0 0 1 1-1zm2 19a.978.978 0 0 1-.306.713A.965.965 0 0 1 46 58H18a1 1 0 0 1-1-1 .978.978 0 0 1 .306-.713A.965.965 0 0 1 18 56h28a1 1 0 0 1 1 1zm-24.719-3 1.5-6h16.438l1.5 6zM59 46H5a3 3 0 0 1-3-3v-1h60v1a3 3 0 0 1-3 3z"/><path class="cls-11" d="M28 27a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm0-4a1 1 0 1 1-1 1 1 1 0 0 1 1-1zM36 27a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm0-4a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></g></svg>
+                    <h2 class="logo-text">Chatbot</h2>
+                </div>
+                <button id="close-botmoto" class="material-symbols-rounded">keyboard_arrow_down</button>
+            </div>
+            
+            <!-- Chatbot body -->
+            <div class="chat-body">
+                <div class="message bot-message">
+                    <svg class="botmot-avatar" xmlns="http://www.w3.org/2000/svg"  width="50" height="50" viewBox="0 0 64 64"><defs><style>.cls-1{fill:#afb4c8}.cls-2{fill:#e1e4ed}.cls-4{fill:#cdd2e1}.cls-7{fill:#99a1b1}.cls-8{fill:#f26973}.cls-9{fill:#ffca6b}.cls-10{fill:#e65263}.cls-11{fill:#393045}</style></defs><g id="_22-bot" data-name="22-bot"><path class="cls-1" d="m41 47 2 8H21l2-8h18z"/><path class="cls-2" d="M46 55a2.006 2.006 0 0 1 2 2 2.015 2.015 0 0 1-2 2H18a2.006 2.006 0 0 1-2-2 2.015 2.015 0 0 1 2-2h28zM63 41v2a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4v-2z"/><path d="M63 9v32H1V9a4 4 0 0 1 4-4h54a4 4 0 0 1 4 4z" style="fill:#ade1fa"/><path class="cls-4" d="M7 43v-2H1v2a4 4 0 0 0 4 4h6a4 4 0 0 1-4-4z"/><path d="M11 5H5a4 4 0 0 0-4 4v32h6V9a4 4 0 0 1 4-4z" style="fill:#8ed8f8"/><path class="cls-4" d="M57 43v-2h6v2a4 4 0 0 1-4 4h-6a4 4 0 0 0 4-4z"/><path d="M53 5h6a4 4 0 0 1 4 4v32h-6V9a4 4 0 0 0-4-4z" style="fill:#d4effc"/><path class="cls-7" d="M41 47H23l-1 4h20l-1-4z"/><path class="cls-4" d="M18 59h28a2.015 2.015 0 0 0 2-2H16a2.006 2.006 0 0 0 2 2z"/><path class="cls-1" d="M47 39v2H17v-2a2.006 2.006 0 0 1 2-2h26a2.006 2.006 0 0 1 2 2z"/><path class="cls-2" d="M41 29v5h-6v-3a2.006 2.006 0 0 0-2-2h-2a2.006 2.006 0 0 0-2 2v3h-6V18h18v11zm-3-5a2 2 0 1 0-2 2 2.006 2.006 0 0 0 2-2zm-8 0a2 2 0 1 0-2 2 2.006 2.006 0 0 0 2-2z"/><path class="cls-8" d="M47 23v6a2.006 2.006 0 0 1-2 2h-2a2.006 2.006 0 0 1-2-2v-6a2.006 2.006 0 0 1 2-2h2a2.006 2.006 0 0 1 2 2z"/><circle class="cls-9" cx="36" cy="24" r="2"/><path class="cls-7" d="M37 34v3H27v-3h10z"/><path class="cls-8" d="M35 31v3h-6v-3a2.006 2.006 0 0 1 2-2h2a2.006 2.006 0 0 1 2 2z"/><circle class="cls-9" cx="28" cy="24" r="2"/><path class="cls-8" d="M23 23v6a2.006 2.006 0 0 1-2 2h-2a2.006 2.006 0 0 1-2-2v-6a2.006 2.006 0 0 1 2-2h2a2.006 2.006 0 0 1 2 2z"/><path class="cls-10" d="M45 21h-2a1.923 1.923 0 0 0-.5.072A2 2 0 0 1 44 23v6a2 2 0 0 1-1.5 1.928A1.923 1.923 0 0 0 43 31h2a2.006 2.006 0 0 0 2-2v-6a2.006 2.006 0 0 0-2-2zM21 21h-2a1.923 1.923 0 0 0-.5.072A2 2 0 0 1 20 23v6a2 2 0 0 1-1.5 1.928A1.923 1.923 0 0 0 19 31h2a2.006 2.006 0 0 0 2-2v-6a2.006 2.006 0 0 0-2-2z"/><path class="cls-11" d="M59 4H5a5.006 5.006 0 0 0-5 5v34a5.006 5.006 0 0 0 5 5h16.719l-1.5 6H18a3.015 3.015 0 0 0-3 3 3 3 0 0 0 3 3h28a3.015 3.015 0 0 0 3-3 3 3 0 0 0-3-3h-2.219l-1.5-6H59a5.006 5.006 0 0 0 5-5V9a5.006 5.006 0 0 0-5-5zM5 6h54a3 3 0 0 1 3 3v31H48v-1a3 3 0 0 0-3-3h-7v-1h3a1 1 0 0 0 1-1v-2.184A2.966 2.966 0 0 0 43 32h2a3 3 0 0 0 3-3v-6a3 3 0 0 0-3-3h-.051a12.987 12.987 0 0 0-25.9 0H19a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h2a2.966 2.966 0 0 0 1-.184V34a1 1 0 0 0 1 1h3v1h-7a3 3 0 0 0-3 3v1H2V9a3 3 0 0 1 3-3zm37 17a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm0-2.816V18a1 1 0 0 0-1-1H23a1 1 0 0 0-1 1v2.184a2.993 2.993 0 0 0-.95-.179 10.995 10.995 0 0 1 21.9 0 2.993 2.993 0 0 0-.95.179zM21 22a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1zm3 7V19h16v14h-4v-2a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v2h-4zm10 4h-4v-2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zm2 2v1h-8v-1zm9 3a1 1 0 0 1 1 1v1H18v-1a1 1 0 0 1 1-1zm2 19a.978.978 0 0 1-.306.713A.965.965 0 0 1 46 58H18a1 1 0 0 1-1-1 .978.978 0 0 1 .306-.713A.965.965 0 0 1 18 56h28a1 1 0 0 1 1 1zm-24.719-3 1.5-6h16.438l1.5 6zM59 46H5a3 3 0 0 1-3-3v-1h60v1a3 3 0 0 1-3 3z"/><path class="cls-11" d="M28 27a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm0-4a1 1 0 1 1-1 1 1 1 0 0 1 1-1zM36 27a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm0-4a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></g></svg>
+                    <div class="message-text">Hey there 👋 <br> How can I help You today?</div>
+                </div>
+            </div>
+    
+            <!-- Chatbot footer -->
+            <div class="chat-footer">
+                <form action="#" class="chat-form" id="chat-form">
+                    <textarea placeholder="Message..." class="message-input" id="message-input" required></textarea>
+                    <div class="chat-controls">
+                        <!-- Emoji Button -->
+                        <button type="button" class="material-symbols-rounded" id="emoji-btn">sentiment_satisfied</button>
+    
+                        <!-- File Upload Button -->
+                        <button type="button" class="material-symbols-rounded" id="file-btn">attach_file</button>
+                        <input type="file" id="file-input" style="display:none;" />
+    
+                        <!-- Send Button -->
+                        <button type="submit" id="send-message" class="material-symbols-rounded">arrow_upward</button>
+                    </div>
+                </form>
+            </div>
+                    <!-- Emoji Modal (Initially hidden) -->
+                    <div id="emoji-modal" style="display:none;">
+                        <div class="emoji-list">
+                            <!-- Emojis List -->
+                            <span class="emoji">😀</span>
+                            <span class="emoji">😊</span>
+                            <span class="emoji">😍</span>
+                            <span class="emoji">😂</span>
+                            <span class="emoji">😭</span>
+                            <span class="emoji">🥺</span>
+                            <span class="emoji">👍</span>
+                            <span class="emoji">❤️</span>
+                            <span class="emoji">🔥</span>
+                            <span class="emoji">😎</span>
+                        </div>
+                    </div>
+        </div>
+    <!---------------------------------------------------------------------------------------->
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="PF/BSHS Logo.png" alt="School Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#">Recommendations</a></li>
+                <li><a href="#">Career Paths</a></li>
+                <li><a href="#">Resources</a></li>
+            </ul>
+            <a href="Login_Form.html" class="login-btn">Log In</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h3>FIND THE RIGHT PATH FOR YOUR FUTURE</h3>
+            <h1>Discover The Senior High Strand <br> <span>That Fits You Best</span></h1>
+            <div class="buttons">
+                <a href="#" class="btn primary">Take The Assessment Now</a>
+                <a href="#strands" class="btn secondary">Strands</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container_hero section">
+        <h2>Explore Your <span class="highlight">Future</span></h2>
+        <p>Take the first step in choosing the right Senior High strand for you.</p>
+        
+        <div class="icon-container">
+            <div class="row">
+                <div class="icon-item">
+                    <img src="strand_selection.svg" alt="Strand Selection">
+                    <p>Strand Selection</p>
+                </div>
+                <div class="icon-item">
+                    <img src="academic_strengths.svg" alt="Academic Strengths">
+                    <p>Academic Strengths</p>
+                </div>
+                <div class="icon-item">
+                    <img src="career_pathways.svg" alt="Career Pathways">
+                    <p>Career Pathways</p>
+                </div>
+                <div class="icon-item">
+                    <img src="personalized_assessment.svg" alt="Personalized Assessment">
+                    <p>Personalized Assessment</p>
+                </div>
+                <div class="icon-item">
+                    <img src="future_opportunities.svg" alt="Future Opportunities">
+                    <p>Future Opportunities</p>
+                </div>
+                <div class="icon-item">
+                    <img src="decision_timeline.svg" alt="Decision Timeline">
+                    <p>Decision Timeline</p>
+                </div>
+                <div class="icon-item">
+                    <img src="career_guidance.svg" alt="Career Guidance Seminar">
+                    <p>Career Guidance Seminar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container_strands" id="strands">
+        <h2><span class="highlight">All The Skills</span> You Need In One Place</h2>
+        <p class="strands">Discover the perfect Senior High strand and gain the knowledge you need for the future.</p>
+
+        <div class="tabs">
+            <button onclick="showSlide(0)">STEM</button>
+            <button onclick="showSlide(1)">HUMSS</button>
+            <button onclick="showSlide(2)">ABM</button>
+            <button onclick="showSlide(3)">Arts and Design</button>
+            <button onclick="showSlide(4)">TVL</button>
+            <button onclick="showSlide(5)">GAS</button>
+        </div>
+
+        <div class="carousel">
+            <button class="prev" onclick="changeSlide(-1)"></button>
+            
+            <div class="slides">
+                <div class="slide">
+                    <img src="PF/stem.png" alt="STEM">
+                    <div class="description">
+                        <h3>S T E M</h3>
+                        <p><strong>Science, Technology, Engineering, and Mathematics</strong></p>
+                        <p>The STEM strand is designed for students who have a strong interest in science, mathematics, engineering, and technology. It focuses on subjects like physics, chemistry, biology, calculus, and computer science, preparing students for careers in engineering, medicine, information technology, and scientific research.</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="PF/humss.png" alt="HUMSS">
+                    <div class="description">
+                        <h3>H U M S S</h3>
+                        <p><strong>Humanities and Social Sciences</strong></p>
+                        <p>The HUMSS strand is ideal for students who love to read, write, analyze social issues, and engage in discussions about culture and society. It covers subjects like philosophy, political science, communication, and literature, preparing students for careers in law, education, journalism, and social sciences.</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="PF/abm.png" alt="ABM">
+                    <div class="description">
+                        <h3>A B M</h3>
+                        <p><strong>Accountancy, Business, and Management</strong></p>
+                        <p>The ABM strand is for students interested in entrepreneurship, finance, and corporate management. It includes subjects like accounting, marketing, business ethics, and economics, preparing students for careers in business administration, finance, marketing, and management.</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="PF/arts.png" alt="Arts and Design">
+                    <div class="description">
+                        <h3>A R T S</h3>
+                        <p><strong>Arts and Design Track</strong></p>
+                        <p>The Arts and Design track is perfect for creative students who want to pursue careers in multimedia arts, visual arts, performing arts, and creative industries. It covers topics like graphic design, painting, filmmaking, theater arts, and photography.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="PF/tvl.png" alt="TVL">
+                    <div class="description">
+                        <h3>T V L</h3>
+                        <p><strong>Technical-Vocational-Livelihood Track</strong></p>
+                        <p>The TVL track is for students who prefer hands-on learning and practical skills that lead to employable skills after graduation. It includes specializations like culinary arts, ICT (Information and Communications Technology), automotive, welding, electrical installation, and caregiving.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="PF/gas.png" alt="GAS">
+                    <div class="description">
+                        <h3>G A S</h3>
+                        <p><strong>General Academic Strand</strong></p>
+                        <p>The GAS strand is best for students who are still undecided about which strand to take. It offers a balanced mix of subjects from STEM, HUMSS, and ABM, allowing students to explore different fields before choosing a career path.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="next" onclick="changeSlide(1)"></button>
+        </div>
+
+        <h2>Choose Based On More Than <span class="highlight">Just Academics!</span></h2>
+        <p>Discover where your skills, interests, and personality fit best.</p>
+
+        <div class="cards-wrapper">
+            <div class="card">Discover Your Strengths & Interests</div>
+            <div class="card">Match Your Personality With The Right Strand</div>
+            <div class="card">Explore Career Paths Aligned With Your Passion</div>
+            <div class="card">Make A Confident Decision About Your Future</div>
+        </div>
+    </div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-form">
+            <h2>LOG IN</h2>
+            <p>Log in to access your profile, courses, and exclusive resources.</p>
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <button onclick="window.location.href='Login_Form.html'" class="login-btn">Log In</button>
+        </div>
+        <div class="login-image">
+            <img src="PF/school.png" alt="School Image">
+        </div>
+    </div>
+
+    <section class="perfect-strand">
+        <div class="content">
+            <img src="PF/books_icon.png" alt="Books and Graduation Cap">
+            <div class="text">
+                <h2>Find Your <span>Perfect Strand</span></h2>
+                <p>There are many career paths to explore, but choosing the right Senior High strand ensures a future that aligns with your strengths and interests.</p>
+            </div>
+        </div>
+        <a href="#" class="btn">Take The Assessment Now</a>
+    </section>
+        
+    <footer>
+        <div class="footer-nav"> 
+            <div class="footer-logos">
+                <img src="PF/BSHS Logo.png" alt="Logo 1">
+                <img src="PF/kagawaran ng edukasyon_logo.png" alt="Logo 2">
+                <img src="PF/deped_logo.png" alt="Logo 3">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#">Recommendations</a></li>
+                    <li><a href="#">Career Paths</a></li>
+                    <li><a href="#">Resources</a></li>
+            </nav>
+        </div>
+        <div class="footer-copyright">
+            <p>Copyrights © 2025 BSHS. All rights reserved.</p>
+        </div>
+    </footer>
+    
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
