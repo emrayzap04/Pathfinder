@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Dashboard</title>
+  <style>
+
+/* ===== General Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* ===== Body Styling ===== */
+body {
+  background-color: #f8fef7;
+}
+
+/* ===== Navigation Bar ===== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.598);
+  padding: 10px 5%;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-left .logo {
+  width: 60px;
+  margin-right: 20px;
+}
+
+.nav-left nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.nav-left nav a:hover {
+  color: #217c1f;
+}
+
+.nav-right .logout-button {
+  background-color: #217c1f;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nav-right .logout-button:hover {
+  background-color: #185c16;
+}
+  
+  /* Student profile section */
+  .student-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    margin: 20px;
+    margin-top: 100px;
+    padding: 80px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  
+  .profile-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+  }
+  
+  .student-details .date {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .student-details h2 {
+    margin: 5px 0;
+    font-size: 24px;
+  }
+  
+  .profile-edit button {
+    background-color: #217c1f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  /* Student navigation buttons */
+  .student-navigation {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .nav-buttons button {
+    background: none;
+    border: none;
+    color: #217c1f;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+/* Assessment Overview */
+.assessment-overview {
+  background-color: #ffffff;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.assessment-overview h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.assessment-overview p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: transparent;
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  color: #217c1f;
+  font-weight: bold;
+}
+
+td {
+  padding: 15px 12px;
+  color: #333;
+  vertical-align: middle;
+}
+
+/* Status badges */
+.status {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+}
+
+.completed {
+  background-color: #217c1f;
+}
+
+.in-progress {
+  background-color: #f57c00;
+}
+
+.not-started {
+  background-color: #666666;
+}
+
+/* Action Buttons */
+.action-button {
+  padding: 8px 18px;
+  border: 2px solid #217c1f;
+  border-radius: 8px;
+  background: transparent;
+  color: #217c1f;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #217c1f;
+  color: white;
+}
+
+/* Table Row Hover */
+tbody tr:hover {
+  background-color: #f1f9f5;
+}
+
+/* Assessment Result Section */
+.assessment-result {
+  background-color: #ffffff;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.assessment-result h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.assessment-result p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: transparent;
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  color: #217c1f;
+  font-weight: bold;
+}
+
+td {
+  padding: 15px 12px;
+  color: #333;
+  vertical-align: middle;
+}
+
+/* Action Button */
+.action-button {
+  padding: 8px 18px;
+  border: 2px solid #217c1f;
+  border-radius: 8px;
+  background: transparent;
+  color: #217c1f;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #217c1f;
+  color: white;
+}
+
+/* Table Row Hover */
+tbody tr:hover {
+  background-color: #f1f9f5;
+}
+
+/* Notes or Recommendation Section */
+.notes-recommendation {
+  background-color: #ffffff;
+  margin: 20px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.notes-recommendation h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.notes-recommendation p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.recommendation-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.recommendation-text {
+  flex: 1;
+  min-width: 300px;
+  margin-right: 20px;
+}
+
+.recommendation-text h2 {
+  color: #217c1f;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.recommendation-text h3 {
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.recommendation-text p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.recommendation-chart {
+  flex: 1;
+  text-align: center;
+  min-width: 300px;
+}
+
+.recommendation-chart img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.recommendation-chart h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.view-more-button {
+  padding: 10px 24px;
+  background-color: #217c1f;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-more-button:hover {
+  background-color: #1a6217;
+}
+
+/* Next Steps Section */
+.next-steps-section {
+  background-color: #ffffff;
+  margin: 20px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.next-steps-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}     
+
+.next-steps-text {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.next-steps-icon {
+  width: 80px;
+}
+
+.next-steps-text h2 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.next-steps-text p {
+  font-size: 18px;
+  color: #555;
+  max-width: 600px;
+}
+
+.appointment-button {
+  background-color: #217c1f;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.appointment-button:hover {
+    background-color: #1a5e17;
+}
+
+/* Divider Line */
+.divider-line {
+  margin: 40px 0 0 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+/* Divider Line */
+.divider-line {
+  margin: 40px 0 0 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+/* Footer Styling */
+footer {
+    border-top: 1px solid #464646; 
+    text-align: center;
+}
+
+.footer-copyright {
+    background-color: #175C1A; 
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.footer-copyright p {
+    color: white;
+}
+
+.footer-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; 
+    padding: 10px 0;
+}
+
+.footer-logos {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-start; 
+    align-items: center; 
+    margin-left: 0; 
+    padding-left: 10px; 
+}
+
+.footer-logos img {
+    height: 40px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    padding: 0;
+    margin: 0;
+    margin-left: 150px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<header class="navbar">
+  <div class="nav-left">
+    <img src="PF/BSHS Logo.png" alt="School Logo" class="logo">
+  </div>
+  <div class="nav-right">
+    <button class="logout-button">Log Out</button>
+  </div>
+</header>
+
+  <section class="student-profile">
+    <div class="profile-info">
+      <img src="PF/student-profile.jpg" alt="Student Photo" class="profile-pic">
+      <div class="student-details">
+        <p class="date">March 05, 2025</p>
+        <h2>ABDUL D. YAKUL</h2>
+        <p><strong>Grade:</strong> 10th</p>
+        <p><strong>Section:</strong> Gold (Au)</p>
+      </div>
+    </div>
+  
+    <div class="profile-edit">
+      <a href="Edit-Profile.html">
+        <button>Edit Student Profile</button>
+      </a>
+    </div>
+  </section>
+
+  <section class="assessment-overview">
+    <h1>ASSESSMENT OVERVIEW</h1>
+    <p>Here you’ll see the list of assessments you need to take. Each one helps identify your academic abilities, personality type, and career interests.</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Assessment Name</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Academic Skills</td>
+          <td>Measures proficiency in Math, English, and Science</td>
+          <td><span class="status completed">Completed</span></td>
+          <td><button class="action-button view">View</button></td>
+        </tr>
+        <tr>
+          <td>Personality Quiz</td>
+          <td>Understand interests and personal traits</td>
+          <td><span class="status in-progress">Not Started</span></td>
+          <td><button class="action-button take">Start</button></td>
+        </tr>
+        <tr>
+          <td>Career Interest Survey</td>
+          <td>Identifies possible career alignments</td>
+          <td><span class="status not-started">Not Started</span></td>
+          <td><button class="action-button start">Start</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  
+
+  <section class="assessment-result">
+    <h1>ASSESSMENT RESULT STATUS</h1>
+    <p>Once you've completed the assessments, your results will appear here. You’ll also see the strand recommendation based on your performance and preferences.</p>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Description</th>
+          <th>Date Taken</th>
+          <th>Result</th>
+          <th>Recommended Strand</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Academic Skills</td>
+          <td>12 Apr 2025</td>
+          <td>Above Average</td>
+          <td>STEM</td>
+          <td><button class="action-button view">View</button></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Personality Quiz</td>
+          <td>10 Apr 2025</td>
+          <td>Creative Thinker</td>
+          <td>HUMSS</td>
+          <td><button class="action-button view">View</button></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Career Interest</td>
+          <td>11 Apr 2025</td>
+          <td>Business-Oriented</td>
+          <td>ABM</td>
+          <td><button class="action-button view">View</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  
+
+
+<section class="notes-recommendation">
+    <h1>NOTES OR RECOMMENDATION</h1>
+    <p>This section gives you a summary of your results and suggests the best strand or track for you. Use this as a guide for your next steps in Senior High School.</p>
+  
+    <div class="recommendation-content">
+      <div class="recommendation-text">
+        <h2>Your Recommended Strand:</h2>
+        <p>Based on your scores and interest profile, you are best suited for the <strong>ABM (Accountancy, Business, and Management)</strong> strand.</p>
+  
+        <h3>Why this strand?</h3>
+        <p>Your assessment results show strong skills in logical reasoning, communication, and critical thinking—qualities essential in the fields of business, management, and finance. You also showed a keen interest in leadership, entrepreneurship, and real-world problem-solving.</p>
+      </div>
+  
+      <div class="recommendation-chart">
+        <img src="PF/your-chart.png" alt="Student Strand Suitability Result" />
+        <h2>Student Assessment Summary</h2>
+      </div>
+    </div>
+  
+  <div class="button-container">
+    <button class="view-more-button" onclick="window.location.href='StudentRecommendation.html'">
+      View More
+    </button>
+  </div>
+</section>
+
+<section class="next-steps-section">
+  <div class="next-steps-content">
+    <div class="next-steps-text">
+      <img src="PF/books_icon.png" alt="Books Icon" class="next-steps-icon">
+      <div>
+        <h2>Next Steps:</h2>
+        <p>Take time to research the ABM strand and talk to your teachers or guidance counselor to explore how this path aligns with your future goals.</p>
+      </div>
+    </div>
+    <a href="appointment.html" class="appointment-button">Book An Appointment</a>
+  </div>
+</section>
+  
+<hr class="divider-line">
+  
+  <footer>
+      <div class="footer-nav"> 
+          <div class="footer-logos">
+              <img src="PF/BSHS Logo.png" alt="Logo 1">
+              <img src="PF/kagawaran ng edukasyon_logo.png" alt="Logo 2">
+              <img src="PF/deped_logo.png" alt="Logo 3">
+          </div>
+          <nav>
+              <ul>
+                  <li><a href="#hero" class="active">Home</a></li>
+                  <li><a href="#recommend">Recommendations</a></li>
+                  <li><a href="#strands">Career Paths</a></li>
+                  <li><a href="#">Resources</a></li>
+          </nav>
+      </div>
+      <div class="footer-copyright">
+          <p>Copyrights © 2025 BSHS. All rights reserved.</p>
+      </div>
+  </footer>
+  
+</body>
+</html>

@@ -78,10 +78,10 @@
                 <img src="PF/BSHS Logo.png" alt="School Logo">
             </div>
             <ul class="nav-links">
-                <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#">Recommendations</a></li>
-                <li><a href="#">Career Paths</a></li>
-                <li><a href="#">Resources</a></li>
+                <li><a href="Landing Page.html" class="active">Home</a></li>
+                <li><a href="#strands">Career Paths</a></li>
+                <li><a href="#">About this</a></li>
+                <li><a href="#">Contacts</a></li>
             </ul>
             <a href="Login_Form.html" class="login-btn">Log In</a>
         </nav>
@@ -94,12 +94,11 @@
             <h1>Discover The Senior High Strand <br> <span>That Fits You Best</span></h1>
             <div class="buttons">
                 <a href="#" class="btn primary">Take The Assessment Now</a>
-                <a href="#strands" class="btn secondary">Strands</a>
             </div>
         </div>
     </section>
 
-    <div class="container_hero section">
+    <div class="container_hero section" id="recommend">
         <h2>Explore Your <span class="highlight">Future</span></h2>
         <p>Take the first step in choosing the right Senior High strand for you.</p>
         
@@ -224,11 +223,15 @@
 
     <div class="login-container">
         <div class="login-form">
-            <h2>LOG IN</h2>
-            <p>Log in to access your profile, courses, and exclusive resources.</p>
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <button onclick="window.location.href='Login_Form.html'" class="login-btn">Log In</button>
+            <form action="login.php" method="POST">
+                <h2>LOG IN</h2>
+                <p>Log in to access your profile, courses, and exclusive resources.</p>
+            
+                <input type="text" id="login-username" name="username" placeholder="Username" required />
+                <input type="password" id="login-password" name="password" placeholder="Password" required />
+                <button onclick="validateLogin()">Login</button>
+            </form>
+
         </div>
         <div class="login-image">
             <img src="PF/school.png" alt="School Image">
@@ -256,8 +259,8 @@
             <nav>
                 <ul>
                     <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#">Recommendations</a></li>
-                    <li><a href="#">Career Paths</a></li>
+                    <li><a href="#recommend">Recommendations</a></li>
+                    <li><a href="#strands">Career Paths</a></li>
                     <li><a href="#">Resources</a></li>
             </nav>
         </div>

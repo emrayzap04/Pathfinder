@@ -46,6 +46,45 @@ tabs.forEach((tab, index) => {
 
 goToSlide(0);
 
+<<<<<<< HEAD
+=======
+/*-----------------Login--------------------*/
+
+
+function validateLogin() {
+  const username = document.getElementById('login-username').value;
+  const password = document.getElementById('login-password').value;
+  const errorMsg = document.getElementById('login-error-msg');
+
+  if (username === '' || password === '') {
+    errorMsg.style.display = 'block';
+  } else {
+    errorMsg.style.display = 'none';
+
+      fetch('login.php', { // <-- Make sure this matches your PHP file
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+      })
+      .then(response => response.text())
+      .then(data => {
+        alert(data); // Show response from PHP
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. See console for details.');
+      });
+  }
+}
+
+function showAskAdmin() {
+  alert('Contact admin@example.com or visit the admin panel.');
+}
+ 
+
+>>>>>>> 8137f02a8c8b12c4531b23badca1927ae7b5eb13
 /*-------------Chatbot---------------------*/
 
 // When the floating button is clicked

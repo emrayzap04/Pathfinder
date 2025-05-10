@@ -95,16 +95,19 @@
     <!-- Login Form -->
     <div class="form-container" id="login-form">
 
-      <h2>Let's Login</h2>
-      <div class="error" id="login-error-msg">Please fill in both fields.</div>
+      <form action="login.php" method="POST">
+        <h2>Let's Login</h2>
+        <div class="error" id="login-error-msg">Please fill in both fields.</div>
 
-      <input type="text" id="login-username" name="username" placeholder="Username" required />
-      <input type="password" id="login-password" name="password" placeholder="Password" required />
-      <button onclick="validateLogin()">Login</button>
+        <input type="text" id="login-username" name="username" placeholder="Username" required />
+        <input type="password" id="login-password" name="password" placeholder="Password" required />
+        <button onclick="validateLogin()">Login</button>
 
-      <div class="switch-link">
-        Don't have an account? <a href="#" onclick="showAskAdmin()">Ask Admin</a>
-      </div>
+        <div class="switch-link">
+          Don't have an account? <a href="#" onclick="showAskAdmin()">Ask Admin</a>
+        </div>
+      </form>
+
     </div>
   </div>
 
@@ -113,41 +116,34 @@
       const username = document.getElementById('login-username').value;
       const password = document.getElementById('login-password').value;
       const errorMsg = document.getElementById('login-error-msg');
-  
+
       if (username === '' || password === '') {
         errorMsg.style.display = 'block';
-        return;
       } else {
         errorMsg.style.display = 'none';
-      }
-  
-      fetch('login.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === 'success') {
 
-          window.location.href = 'StudentDashboard.php';
-        } else {
-          alert(data.message);
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. See console for details.');
-      });
+        fetch('login.php', { // <-- Make sure this matches your PHP file
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+        })
+        .then(response => response.text())
+        .then(data => {
+          alert(data); // Show response from PHP
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred. See console for details.');
+        });
+      }
     }
-  
+
     function showAskAdmin() {
       alert('Contact admin@example.com or visit the admin panel.');
     }
   </script>
-  
 
 </body>
 
